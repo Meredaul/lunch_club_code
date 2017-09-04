@@ -10,6 +10,7 @@ gem 'cloudinary'
 
 gem 'figaro'
 
+gem 'omniauth-google-oauth2'
 gem 'omniauth-facebook'
 gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
