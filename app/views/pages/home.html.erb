@@ -1,11 +1,15 @@
-<% if user_signed_in? %>
-  <%= link_to destroy_user_session_path, method: :delete do %>
-    <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+<div class="background_group_creation" style="background-image:  url(' <%= cl_image_path("group_of_young_people_eating.jpg_z853ab.jpg") %> ');">
+
+  <% if user_signed_in? %>
+    <%= link_to destroy_user_session_path, method: :delete do %>
+      <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+    <% end %>
+  <% else %>
+    <div class="#">
+      <%= link_to "Sign up", "/users/sign_up", class: ".sign_up" %>
+      <%= link_to "Login", "/users/sign_in", class: ".sign_in" %>
+    </div>
   <% end %>
-<% else %>
-  <div class="#">
-    <%= link_to "Sign up", "/users/sign_up", class: ".sign_up" %>
-    <%= link_to "Login", "/users/sign_in", class: ".sign_in" %>
-  </div>
-<% end %>
+
+</div>
 
