@@ -1,4 +1,4 @@
-<div class="background_group_creation" style="background-image:  url(' <%= cl_image_path("group_of_young_people_eating.jpg_z853ab.jpg") %> ');">
+<div class="background_home" style="background-image:  url(' <%= cl_image_path("group_of_young_people_eating.jpg_z853ab.jpg") %> ');">
 
   <% if user_signed_in? %>
     <%= link_to destroy_user_session_path, method: :delete do %>
@@ -10,6 +10,11 @@
       <%= link_to "Login", "/users/sign_in", class: ".sign_in" %>
     </div>
   <% end %>
+
+  <%= link_to 'Groups', groups_path %>
+  <%= link_to 'Create group', new_group_path %>
+  <%= link_to 'Dashboard', dashboard_path %>
+  <%= link_to 'Join group', new_participation_path %>
 
 </div>
 
