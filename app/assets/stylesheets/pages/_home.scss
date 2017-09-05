@@ -23,11 +23,3 @@
 - I always make the width a little wider than the screen size min-width, just in case
 */
 
-.background_home {
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  & a {
-    color: white;
-  }
-}
