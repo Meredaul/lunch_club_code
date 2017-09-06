@@ -10,16 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170906210540) do
+ActiveRecord::Schema.define(version: 20170906232122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "balances", force: :cascade do |t|
+    t.integer  "amount"
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_balances_on_group_id", using: :btree
+    t.index ["user_id"], name: "index_balances_on_user_id", using: :btree
+  end
 
   create_table "groups", force: :cascade do |t|
     t.string   "title"
     t.boolean  "all_cooks"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_groups_on_user_id", using: :btree
   end
 
   create_table "occurences", force: :cascade do |t|
@@ -72,6 +84,9 @@ ActiveRecord::Schema.define(version: 20170906210540) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "balances", "groups"
+  add_foreign_key "balances", "users"
+  add_foreign_key "groups", "users"
   add_foreign_key "occurences", "groups"
   add_foreign_key "occurences", "slot_times"
   add_foreign_key "participations", "groups"

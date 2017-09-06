@@ -13,9 +13,20 @@
 
 
 .create_area {
-
+  background-color: rgba(31,32,37,0.75);
+  opacity: 0.95;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 15vh;
+  width: 25vw;
   & .creation_button {
-
+    background-color: #3E70CC;
+    opacity: 0.4;
+    width: 60%;
+    height: 40%;
   }
 }
 

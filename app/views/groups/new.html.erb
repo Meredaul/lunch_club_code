@@ -1,4 +1,5 @@
 <div class="background" style="background-image:  url(' <%= cl_image_path("several_lunchboxes_for_colleagues_cnrlaa.jpg") %> ');" >
+<div class="container">
 
 
   <div class="participations_area">
@@ -13,6 +14,7 @@
 
 
     <div class="create_area">
+      <h3>Create the group</h3>
       <%= f.button :submit, "", class: "creation_button" %>
     </div>
   <% end %>
@@ -24,4 +26,5 @@
 
   <%= render 'shared/linker_icons' %>
   <%= render 'shared/home_linker' %>
+</div>
 </div>
