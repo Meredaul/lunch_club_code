@@ -1,18 +1,27 @@
 <div class="background" style="background-image:  url(' <%= cl_image_path("several_lunchboxes_for_colleagues_cnrlaa.jpg") %> ');" >
 
+
+  <div class="participations_area">
+  </div>
+
+
   <%= simple_form_for(@group) do |f| %>
-    <%= f.input :title, class: "suggest-input" %>
-        <%= f.input :title  %>
-        <%= f.input :all_cooks  %>
-        <%= f.button :submit, class: "create_area"  %>
+    <div class="form_area">
+      <%= f.input :title, placeholder: "Title", label: false  %>
+      <%= f.input :all_cooks, label: 'Only cookers here:' %>
+    </div>
+
+
+    <div class="create_area">
+      <%= f.button :submit, "", class: "creation_button" %>
+    </div>
   <% end %>
 
 
+  <div class="days_area">
+  </div>
 
 
-
-
-
-  <%= render 'layouts/linker_icons' %>
-  <%= render 'layouts/home_linker' %>
+  <%= render 'shared/linker_icons' %>
+  <%= render 'shared/home_linker' %>
 </div>
