@@ -2,24 +2,31 @@
 
 
 /***** In the stylesheet *****/
-@media only screen and (min-width: 320px) {
-    #cover-image {
-        background-image: cloudinary-url("image_name.jpg", $width: 400, $height: 250, $crop: "fill", $type:"upload")
-    }
-}
-@media only screen and (min-width: 768px) {
-    #cover-image {
-        background-image: cloudinary-url("image_name.jpg", $width: 900, $height: 350, $crop: "fill", $type:"upload")
-    }
-}
-@media only screen and (min-width: 1200px) {
-    #cover-image {
-        background-image: cloudinary-url("image_name.jpg", $width: 1300, $height: 350, $crop: "fill", $type:"upload")
-    }
-}
+
+// @media only screen and (min-width: 320px) {
+//     #cover-image {
+//         background-image: cloudinary-url("image_name.jpg", $width: 400, $height: 250, $crop: "fill", $type:"upload")
+//     }
+// }
+// @media only screen and (min-width: 768px) {
+//     #cover-image {
+//         background-image: cloudinary-url("image_name.jpg", $width: 900, $height: 350, $crop: "fill", $type:"upload")
+//     }
+// }
+// @media only screen and (min-width: 1200px) {
+//     #cover-image {
+//         background-image: cloudinary-url("image_name.jpg", $width: 1300, $height: 350, $crop: "fill", $type:"upload")
+//     }
+// }
+
 /* Notes:
 - the $type:"upload" tag is required only if you are using a cloudinary-url generator in stylsheet AND if you have uploaded the image using Cloudinary's dashboard (i.e., the non-tech way)
 - crop is set to fill since I only want part of an image to be showing (whatever naturally fits into a 400X250), rather than have the entire image scrunched into a 400X250. How does Cloudinary select what of the image goes in the 400X250? That's via a gravity tag; when unspecified, as here, the gravity is auto-set to center (i.e., middle of the image). And you can probably guess, in order for a crop fill to even work, you have to specify a height and width, rather than use an auto tag
 - I always make the width a little wider than the screen size min-width, just in case
 */
+
+.home_icons {
+}
+
+
 

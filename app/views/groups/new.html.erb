@@ -1,7 +1,18 @@
 <div class="background" style="background-image:  url(' <%= cl_image_path("several_lunchboxes_for_colleagues_cnrlaa.jpg") %> ');" >
 
+  <%= simple_form_for(@group) do |f| %>
+    <%= f.input :title, class: "suggest-input" %>
+        <%= f.input :title  %>
+        <%= f.input :all_cooks  %>
+        <%= f.button :submit, class: "create_area"  %>
+  <% end %>
+
+
+
+
+
+
+
   <%= render 'layouts/linker_icons' %>
-
-  <%= link_to "root", root_path %>
-
+  <%= render 'layouts/home_linker' %>
 </div>

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   get 'dashboard', to: 'pages#dashboard'
 
-  resources :groups, only: [:new, :index]
+  resources :groups, only: [:new, :index, :create]
 
   resources :participations, only: [:new]
 
