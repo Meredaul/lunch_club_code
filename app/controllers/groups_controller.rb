@@ -6,18 +6,16 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
-    # authorize @group
-    @group.creator = current_user
-      if @session.save
-        new_chatroom = Chatroom.new
-        new_chatroom.session = @session
-        new_chatroom.save
-        redirect_to chatroom_path(new_chatroom)
-      else
-        render :new
-      end
+    @group.user = current_user
+    if @group.save
+      new_balance = Balance.new
+      new_balance.group = @group
+      new_balance.user = current_user
+      new_balance.amount = 0
+      new_balance.save
+      redirect_to groups_path(@group)
     else
-      redirect_to root_home, alert: "You can't do this!"
+      render :new
     end
   end
 
@@ -28,8 +26,15 @@ class GroupsController < ApplicationController
 
   private
 
+  def group_params
+    params.require(:group).permit(:title, :only_cookers)
+  end
   def search_for_group
     # @group = Group.find(params[:id])
+  end
+
+  def index
+    @groups = current_user.groups
   end
 
 end

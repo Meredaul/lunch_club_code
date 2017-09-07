@@ -1,6 +1,7 @@
 class User < ApplicationRecord
 
   has_many :participations
+  has_many :balances
   has_many :groups, through: :participations
 
   # Include default devise modules. Others available are:

@@ -1,8 +1,25 @@
 <div class="background" style="background-image:  url(' <%= cl_image_path("tupperware_lunch_table_profondeur_fb6cpn.jpg") %> ');" >
+<div class="container">
+
+
+  <% @groups.each do |group| %>
+    <div class="card_group">
+      <div class="card_group_background-image">
+        <div class="card_group_title">group.title</div>
+        <div class="card_group_participant-sticks">
+
+        </div>
+        <div class="card_group_occurences">
+
+        </div>
+        <div class="card_group_balance"><%= group.balance %></div>
+      </div>
+    </div>
+  <% end %>
+
+
 
   <%= render 'shared/linker_icons' %>
   <%= render 'shared/home_linker' %>
-
-  <%= link_to "root", root_path %>
-
+</div>
 </div>
