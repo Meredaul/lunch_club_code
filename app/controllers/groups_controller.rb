@@ -20,7 +20,7 @@ class GroupsController < ApplicationController
   end
 
   def index
-    # @groups = Group.all
+    @groups = current_user.groups
   end
 
 
@@ -29,12 +29,4 @@ class GroupsController < ApplicationController
   def group_params
     params.require(:group).permit(:title, :only_cookers)
   end
-  def search_for_group
-    # @group = Group.find(params[:id])
-  end
-
-  def index
-    @groups = current_user.groups
-  end
-
 end

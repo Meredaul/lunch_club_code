@@ -5,14 +5,14 @@
   <% @groups.each do |group| %>
     <div class="card_group">
       <div class="card_group_background-image">
-        <div class="card_group_title">group.title</div>
+        <div class="card_group_title"><h3><%= group.title %></h3></div>
         <div class="card_group_participant-sticks">
 
         </div>
         <div class="card_group_occurences">
 
         </div>
-        <div class="card_group_balance"><%= group.balance %></div>
+        <div class="card_group_balance"><%= Balance.where(user: current_user).where(group: group).first.amount %></div>
       </div>
     </div>
   <% end %>

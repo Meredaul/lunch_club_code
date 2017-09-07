@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :participations
   has_many :balances
   has_many :groups, through: :participations
+  has_many :groups
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
