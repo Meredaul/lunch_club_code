@@ -10,9 +10,6 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 
-// require funs/index
-// require funs/still_working_onit
-
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
