@@ -1,5 +1,6 @@
-<div class="background_home" style="background-image:  url(' <%= cl_image_path("group_of_young_people_eating.jpg_z853ab.jpg") %> ');">
-  <div class="container">
+<div class="background_home" >
+<!--   style="background-image:  url(' <%#= cl_image_path("group_of_young_people_eating.jpg_z853ab.jpg") %> ');"
+ -->  <div class="container">
 
     <% if user_signed_in? %>
       <%= link_to destroy_user_session_path, method: :delete do %>

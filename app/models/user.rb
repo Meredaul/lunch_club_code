@@ -1,9 +1,12 @@
 class User < ApplicationRecord
 
-  has_many :participations
   has_many :balances
+  has_many :messages
+  has_many :participations
+  has_many :creations
+  # has_many :groups, through: :creations
   has_many :groups, through: :participations
-  has_many :groups
+
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -18,7 +21,7 @@ class User < ApplicationRecord
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)
     user_params.merge! auth.info.slice(:email, :first_name, :lastname)
-    user_params['facebook_picture_url'] = auth.info.image_size
+    user_params['picture_url'] = auth.info.image_size
     user_params['token'] = auth.credentials.token
     user_params['token_expiry'] = Time.at(auth.credentials.expires_at)
     user_params = user_params.to_h
@@ -40,7 +43,7 @@ class User < ApplicationRecord
   def self.from_google_omniauth(auth)
     user_params = auth.slice(:provider, :uid)
     user_params.merge! auth.info.slice(:email, :first_name, :last_name)
-    user_params[:google_picture_url] = auth.info.image
+    user_params[:picture_url] = auth.info.image
     user_params[:token] = auth.credentials.token
     user_params[:token_expiry] = Time.at(auth.credentials.expires_at)
     user_params = user_params.to_h
@@ -58,6 +61,6 @@ class User < ApplicationRecord
   private
 
   def send_welcome_email
-    UserMailer.welcome(self).deliver_now
+    # UserMailer.welcome(self).deliver_now
   end
 end

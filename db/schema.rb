@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170906232122) do
+ActiveRecord::Schema.define(version: 20171027104941) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,24 @@ ActiveRecord::Schema.define(version: 20170906232122) do
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_balances_on_group_id", using: :btree
     t.index ["user_id"], name: "index_balances_on_user_id", using: :btree
+  end
+
+  create_table "cooks", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_cooks_on_group_id", using: :btree
+    t.index ["user_id"], name: "index_cooks_on_user_id", using: :btree
+  end
+
+  create_table "creations", force: :cascade do |t|
+    t.integer  "group_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_creations_on_group_id", using: :btree
+    t.index ["user_id"], name: "index_creations_on_user_id", using: :btree
   end
 
   create_table "groups", force: :cascade do |t|
@@ -52,10 +70,31 @@ ActiveRecord::Schema.define(version: 20170906232122) do
     t.index ["user_id"], name: "index_participations_on_user_id", using: :btree
   end
 
+  create_table "presences", force: :cascade do |t|
+    t.boolean  "attended"
+    t.boolean  "cuisto"
+    t.integer  "user_id"
+    t.integer  "occurence_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["occurence_id"], name: "index_presences_on_occurence_id", using: :btree
+    t.index ["user_id"], name: "index_presences_on_user_id", using: :btree
+  end
+
   create_table "slot_times", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "turns", force: :cascade do |t|
+    t.integer  "points"
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_turns_on_group_id", using: :btree
+    t.index ["user_id"], name: "index_turns_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -76,19 +115,26 @@ ActiveRecord::Schema.define(version: 20170906232122) do
     t.datetime "updated_at",                          null: false
     t.string   "provider"
     t.string   "uid"
-    t.string   "facebook_picture_url"
+    t.string   "picture_url"
     t.string   "token"
     t.datetime "token_expiry"
-    t.string   "google_picture_url"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
   add_foreign_key "balances", "groups"
   add_foreign_key "balances", "users"
+  add_foreign_key "cooks", "groups"
+  add_foreign_key "cooks", "users"
+  add_foreign_key "creations", "groups"
+  add_foreign_key "creations", "users"
   add_foreign_key "groups", "users"
   add_foreign_key "occurences", "groups"
   add_foreign_key "occurences", "slot_times"
   add_foreign_key "participations", "groups"
   add_foreign_key "participations", "users"
+  add_foreign_key "presences", "occurences"
+  add_foreign_key "presences", "users"
+  add_foreign_key "turns", "groups"
+  add_foreign_key "turns", "users"
 end

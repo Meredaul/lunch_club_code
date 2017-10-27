@@ -1,8 +1,16 @@
 <div class="background" style="background-image:  url(' <%= cl_image_path("sharing_food_wood_table_dpkhj9.jpg") %> ');" >
 
+  <div class="personal_informations">
+    <div class="profil_image"> <%= image_tag current_user.picture_url %> </div>
+  </div>
+
+  <div class="reminder_banner">
+  </div>
+
+  <div class="linked_groups">
+  </div>
+
   <%= render 'shared/linker_icons' %>
   <%= render 'shared/home_linker' %>
-
-  <%= link_to "root", root_path %>
 
 </div>
