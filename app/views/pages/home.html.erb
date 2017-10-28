@@ -2,71 +2,64 @@
 
     <div class="main">
 
+      <div id="application_title">
+        <h1>Lunch club</h1>
+        <p>C'est Adrien qui fait la popotte demain.</p>
+      </div>
+
+
       <% if user_signed_in? %>
 
-
-
-        <div id="application_title">
-          <h1>Lunch club</h1>
-          <p>C'est Adrien qui fait la popotte demain.</p>
-        </div>
-
-
-
         <div class="home_icons">
-
           <%= link_to(groups_path) do  %>
-            <div class="groups_icon">
-              <%= cl_image_tag("networking_copy_dydj0i.svg", :width=>50, :crop=>"crop") %>
+            <div class="groups_icon icon">
+              <%= image_tag("groups.svg") %>
             </div>
           <% end %>
-
           <%= link_to(new_group_path) do %>
-            <div class="creation_icon">
-              <%= cl_image_tag("create_group_noun_kiddy_o37w4l.svg", :width=>50, :crop=>"crop") %>
+            <div class="creation_icon icon">
+              <%= image_tag("create_group_noun_kiddy.svg") %>
             </div>
           <% end %>
-
           <%= link_to(dashboard_path) do %>
-            <div class="dashboard_icon">
-              <%= cl_image_tag("home_sdan40.svg", :width=>50, :crop=>"crop") %>
+            <div class="dashboard_icon icon">
+              <%= image_tag("home.svg") %>
             </div>
           <% end %>
-
           <%= link_to(new_participation_path) do %>
-            <div class="participation_icon">
-              <%= cl_image_tag("group_men_noun_y7okp1.svg", :width=>50, :x=>50, :y=>50, :crop=>"crop") %>
+            <div class="participation_icon icon">
+              <%= image_tag("group_men_noun.svg") %>
             </div>
           <% end %>
-
         </div>
 
-
-
-        <%= link_to destroy_user_session_path, method: :delete do %>
-          <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
-
-
-
-        <% end %>
       <% else %>
-
-
 
         <div class="#">
           <%= link_to "Sign up", "/users/sign_up", class: ".sign_up" %>
           <%= link_to "Login", "/users/sign_in", class: ".sign_in" %>
         </div>
 
-
-
       <% end %>
 
     </div>
 
+
+    <div class="group_corner"></div>
+    <div class="creation_corner"></div>
+    <div class="dashboard_corner"></div>
+    <div class="participation_corner"></div>
+
+
     <div class="top"></div>
     <div class="left"></div>
-    <div class="bottom"></div>
+    <div class="bottom">
+      <% if user_signed_in? %>
+        <%= link_to destroy_user_session_path, method: :delete do %>
+            <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
+        <% end %>
+      <% end %>
+    </div>
     <div class="right"></div>
 
 </div>
