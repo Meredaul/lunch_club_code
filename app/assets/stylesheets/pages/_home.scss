@@ -30,6 +30,63 @@
   background-image: linear-gradient(rgba(31,32,37,0.7), rgba(31,32,37,0.7)), url( 'https://res.cloudinary.com/dztlb3lh5/image/upload/v1504556662/group_of_young_people_eating.jpg_z853ab.jpg' );
 }
 
+.grid {
+  display: grid;
+  grid-template-columns: 8% 84% 8%;
+  grid-template-rows: 5% 90% 5%;
+}
+
+.main {
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
+}
+
+.top {
+  grid-column: 1 / span 3;
+  grid-row: 1;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgba(255,255,255,0.5);
+}
+.left {
+  grid-column: 1;
+  grid-row: 1 / span 3;
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-right-color: rgba(255,255,255,0.5);
+}
+.bottom {
+  grid-column: 1 / span 3;
+  grid-row: 3;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: rgba(255,255,255,0.5);
+}
+.right {
+  grid-column: 3;
+  grid-row: 1 / span 3;
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-left-color: rgba(255,255,255,0.5);
+}
+
+#application_title {
+  font-family: 'BioRhyme', serif;
+  & h1 {
+    font-size: 10vh;
+    text-shadow: 1px 3px 2px rgba(31, 32, 37, 0.8);
+  }
+  & p { font-size: 2vh; }
+  margin-top: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  color: rgba(255, 255, 255, 0.8);
+
+}
+
+
 .home_icons {
 }
 
