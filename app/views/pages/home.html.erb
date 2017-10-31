@@ -82,19 +82,24 @@
                 <% end -%><br />
                 <div class="modals-submit_area"><%= f.submit "Log In", class: "btn modals-submit_button", label: 'log in' %></div>
               <% end %>
+
+              <div class="modals-first_footer modals-field">
+                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                <%#= render "devise/shared/links" %>
+                <%- resource_class.omniauth_providers.each do |provider| %>
+                  <% if provider == :google_oauth2 %>
+                    <%= link_to(omniauth_authorize_path(resource_name, provider)) do %>
+                      <i class="fa fa-google-plus" aria-hidden="true"></i>
+                    <% end %>
+                  <% else %>
+                    <%= link_to(omniauth_authorize_path(resource_name, provider)) do %>
+                      <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                    <% end %>
+                  <% end %>
+                <% end -%>
+              </div>
             </div>
 
-            <div class="modals-first_footer modals-field">
-              <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-              <%#= render "devise/shared/links" %>
-              <%- resource_class.omniauth_providers.each do |provider| %>
-                <% if provider == :google_oauth2 %>
-                  <%= link_to "Sign in with Google", omniauth_authorize_path(resource_name, provider) %><br />
-                <% else %>
-                  <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %><br />
-                <% end %>
-              <% end -%>
-            </div>
             <div class="modals-second_footer">
               <%= link_to "Sign up", new_registration_path(resource_name) %>
             </div>
