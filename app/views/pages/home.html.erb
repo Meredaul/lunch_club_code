@@ -33,28 +33,125 @@
         <% end %>
       </div>
 
+      <div class="group_corner">
+        <%= link_to(groups_path) do %>
+          <div class="group_link"></div>
+        <% end %>
+      </div>
+      <div class="creation_corner"></div>
+      <div class="dashboard_corner"></div>
+      <div class="participation_corner"></div>
+
+      <div class="top"></div>
+      <div class="left"></div>
+      <div class="bottom">
+        <% if user_signed_in? %>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+              <div class="kill_session"><i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %></div>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="right"></div>
+
     <% else %>
+
+      <%#= render "welcome/sign_up_modal" %>
+
+      <div id="log_in_modal" class="modal fade">
+        <div class="modal-dialog">
+          <div class="modals-content">
+
+            <div class="modals-header modals-field">
+              <p class="modals-title">Log In</p>
+            </div>
+
+            <div class="modals-body modals-field">
+              <div class="modals-moose_area">
+                <%= image_tag("modals_moose_head.svg", class: "modals-mascotte") %>
+              </div>
+
+              <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <%= devise_error_messages! %>
+                <%= f.input :email, placeholder: 'user@domain.com', autofocus: true, label: false %>
+                <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %><br />
+                <%= f.input :password, placeholder: '••••••••', autocomplete: "off", label: false %>
+                <% if devise_mapping.rememberable? -%>
+                  <%= f.input_field :remember_me, inline_label: 'Oui, se souvenir de moi', as: :boolean %>
+                <% end -%><br />
+                <div class="modals-submit_area"><%= f.submit "Log In", class: "btn modals-submit_button", label: 'log in' %></div>
+              <% end %>
+            </div>
+
+            <div class="modals-first_footer modals-field">
+              <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+              <%#= render "devise/shared/links" %>
+              <%- resource_class.omniauth_providers.each do |provider| %>
+                <% if provider == :google_oauth2 %>
+                  <%= link_to "Sign in with Google", omniauth_authorize_path(resource_name, provider) %><br />
+                <% else %>
+                  <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %><br />
+                <% end %>
+              <% end -%>
+            </div>
+            <div class="modals-second_footer">
+              <%= link_to "Sign up", new_registration_path(resource_name) %>
+            </div>
+
+          </div>
+        </div>
+      </div>
+<!-- <div class="modal fade" id="sign_up_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="Sign_up_modal">Sign up</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+
+
+        <div class="modal-body">
+
+
+        </div>
+
+        <div class="modal-footer">
+
+        </div>
+
+      </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
 
       <div class="moose_area">
         <div class="moose_head"><%= image_tag("moose_head.svg") %></div>
       </div>
 
       <div class="register_area">
-        <%= link_to("/users/sign_in", class: ".sign_in") do  %>
+        <a href="#log_in_modal" role="" class="" data-toggle="modal" data-backdrop="true">
+        <%#= link_to("/users/sign_in", class: ".sign_in") do  %>
           <div class="register_button btn btn-success">Join Us</div>
-        <% end %>
-      </div>
-
-      <div class="about_us">
-        <a href="#">
-          <div class="about_us_scroll_button"><p>About Us</p></div>
+        <%# end %>
         </a>
       </div>
 
-      <div class="sign_links">
+      <a href="#">
+        <div class="about_us">
+          <div class="about_us_scroll_button"><p>About Us</p></div>
+        </div>
+      </a>
 
-        <div class="sign_up_link">
-          <%= render "welcome/sign_up_modal" %>
+      <!-- <div class="sign_links">
+
+        <div class="sign_up_link"> -->
+
 
 
           <!-- <a href="#" role="button" data-toggle="modal"></a> -->
@@ -89,8 +186,11 @@
             </div>
           </div> -->
 
+          <!-- Modal HTML -->
 
-          <!-- <a href="#my_modal" role="button" class="btn btn-large btn-primary" data-toggle="modal">here</a> -->
+
+
+
                       <!-- Button trigger modal -->
           <!-- <a href="#sign_up_modal" role="button" class="btn btn-large btn-primary" data-toggle="modal">Nous Rejoindre</a> -->
 
@@ -103,9 +203,9 @@
           <%#= link_to("/users/sign_up", class: ".sign_up") do %>
             <%#= image_tag("board_signup.svg") %>
           <%# end %>
-        </div>
+        <!-- </div>
 
-      </div>
+      </div> -->
 
 
 
@@ -114,26 +214,7 @@
 
   </div>
 
-  <div class="group_corner">
-    <%= link_to(groups_path) do %>
-      <div class="group_link"></div>
-    <% end %>
-  </div>
-  <div class="creation_corner"></div>
-  <div class="dashboard_corner"></div>
-  <div class="participation_corner"></div>
 
-
-  <div class="top"></div>
-  <div class="left"></div>
-  <div class="bottom">
-    <% if user_signed_in? %>
-      <%= link_to destroy_user_session_path, method: :delete do %>
-          <div class="kill_session"><i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %></div>
-      <% end %>
-    <% end %>
-  </div>
-  <div class="right"></div>
 
 </div>
 
