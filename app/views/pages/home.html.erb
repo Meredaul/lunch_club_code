@@ -1,12 +1,31 @@
 <div class="background_home grid" >
 
+<% if user_signed_in? %>
+  <div class="group_corner">
+    <%= link_to(groups_path) do %>
+      <div class="group_link"></div>
+    <% end %>
+  </div>
+  <div class="creation_corner"></div>
+  <div class="dashboard_corner"></div>
+  <div class="participation_corner"></div>
+
+  <div class="top"></div>
+  <div class="left"></div>
+  <div class="bottom">
+    <%= link_to destroy_user_session_path, method: :delete do %>
+      <div class="kill_session"><i class="fa fa-sign-out"></i><%= t(".sign_out", default: " Log out") %></div>
+    <% end %>
+  </div>
+  <div class="right"></div>
+<% end %>
+
   <div class="main">
 
     <div id="application_title">
       <h1>Lunch Club</h1>
       <p>C'est Adrien qui fait la popotte demain.</p>
     </div>
-
 
     <% if user_signed_in? %>
 
@@ -32,26 +51,6 @@
           </div>
         <% end %>
       </div>
-
-      <div class="group_corner">
-        <%= link_to(groups_path) do %>
-          <div class="group_link"></div>
-        <% end %>
-      </div>
-      <div class="creation_corner"></div>
-      <div class="dashboard_corner"></div>
-      <div class="participation_corner"></div>
-
-      <div class="top"></div>
-      <div class="left"></div>
-      <div class="bottom">
-        <% if user_signed_in? %>
-          <%= link_to destroy_user_session_path, method: :delete do %>
-              <div class="kill_session"><i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %></div>
-          <% end %>
-        <% end %>
-      </div>
-      <div class="right"></div>
 
     <% else %>
 
