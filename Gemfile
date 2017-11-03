@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'rails-assets-tether', '>= 1.1.1'
+
 # gem 'twitter-bootstrap-turbo'
 
 gem 'postmark-rails'

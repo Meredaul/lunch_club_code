@@ -1,6 +1,19 @@
 #log_in_modal {
-  // background-image: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url( 'https://res.cloudinary.com/dztlb3lh5/image/upload/v1504556662/group_of_young_people_eating.jpg_z853ab.jpg' )
+  background-image: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url( 'https://res.cloudinary.com/dztlb3lh5/image/upload/v1504556662/group_of_young_people_eating.jpg_z853ab.jpg' );
+  background-position: center;
+  background-size: cover;
   filter: rgba(0,0,0,0.9);
+}
+
+#sign_up_modal {
+  background-image: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url( 'https://res.cloudinary.com/dztlb3lh5/image/upload/v1504556662/group_of_young_people_eating.jpg_z853ab.jpg' );
+  background-position: center;
+  background-size: cover;
+  filter: rgba(0,0,0,0.9);
+}
+
+.modal {
+  // transition: transform .2s ease-in-out;
 }
 
 
@@ -58,6 +71,13 @@
   font-family: 'Biorhyme', serif;
   font-weight: 300;
   box-shadow: 1px 1px 4px rgba(31,32,37,0.5);
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.18s;
+}
+.modals-submit_button:hover {
+  opacity: 0.85;
+  transform: scale(1.01);
+  color: rgba(31,32,37,0.67) !important;
 }
 
 .modals-first_footer {
@@ -65,10 +85,17 @@
   padding: 0px 20px;
   justify-content: space-between;
   align-items: center;
+  filter: drop-shadow(1px 1px 1px rgba(31,32,37,0.8));
   i {
     font-size: 25px;
     color: #AE81FF;
     opacity: 0.85;
+    transition-timing-function: ease-out;
+    transition-duration: 0.25s;
+  }
+  i:hover {
+    opacity: 0.5;
+    transform: scale(1.052);
   }
 }
 .modals-second_footer {
@@ -77,6 +104,15 @@
   align-items: center;
   a {
     color: white;
+    font-family: 'Biorhyme', serif;
     opacity: 0.7;
+    transition-timing-function: ease-in-out;
+    transition-duration: 0.35s;
+  }
+  a:hover {
+    border-radius: 6px;
+    text-align: center;
+    width: 100px;
+    box-shadow: 0px 0px 25px rgba(255,255,255,0.25), inset 0px 0px 25px rgba(255,255,255,0.2);
   }
 }
